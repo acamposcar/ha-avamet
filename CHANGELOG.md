@@ -11,5 +11,3 @@
   memoria y caducidad por hora de observación.
 - Traducciones en español, valenciano/catalán e inglés; icono propio.
 - Estructura HACS, validadores de CI y pruebas automatizadas.
-
-La publicación y la migración de una instalación existente son pasos separados.

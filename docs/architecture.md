@@ -77,8 +77,9 @@ No se ofrece un pronóstico de AVAMET ni se añaden proveedores externos.
 
 ## Cambio de fuente
 
-La API de proyectos de AVAMET exige credenciales que no tenemos. Cuando haya
-acceso, se puede añadir otro transporte y analizador que produzcan
+La API de proyectos documentada requiere credenciales. Para añadir un transporte
+basado en ella es necesario disponer de acceso autorizado y confirmar sus campos
+y la disponibilidad de datos de lluvia reciente. Ese transporte debe producir
 `Observation`, sin reescribir las entidades ni su control de caducidad.
 
 ## Calidad
