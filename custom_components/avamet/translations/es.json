@@ -1,0 +1,52 @@
+{
+  "title": "AVAMET",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Añadir una estación de AVAMET",
+        "description": "Introduce el ID de la URL de AVAMET (por ejemplo c13m207e02). Se añadirán solo las mediciones que admite esta estación.",
+        "data": {"station_id": "ID de la estación"}
+      }
+    },
+    "error": {
+      "invalid_station_id": "Utiliza un ID como c13m207e02, no una URL.",
+      "cannot_connect": "No se puede conectar con AVAMET. Vuelve a intentarlo más tarde.",
+      "invalid_response": "No se ha encontrado una observación utilizable. Comprueba el ID y la página pública de AVAMET."
+    },
+    "abort": {"already_configured": "Esta estación ya está configurada."}
+  },
+  "options": {
+    "error": {"invalid_options": "Utiliza valores dentro de los rangos permitidos."},
+    "step": {
+      "init": {
+        "title": "Opciones de la estación",
+        "description": "Las observaciones que superen la antigüedad máxima quedan no disponibles. No se inventan previsiones ni estados del cielo.",
+        "data": {
+          "update_interval_minutes": "Intervalo de actualización (minutos, mínimo 5)",
+          "max_age_minutes": "Antigüedad máxima de la observación (minutos)",
+          "windy_threshold_kmh": "Umbral de viento fuerte (km/h)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {"name": "Temperatura"},
+      "temperature_min": {"name": "Temperatura mínima diaria"},
+      "temperature_max": {"name": "Temperatura máxima diaria"},
+      "humidity": {"name": "Humedad"},
+      "pressure": {"name": "Presión"},
+      "wind_speed": {"name": "Velocidad del viento"},
+      "daily_max_wind_gust": {"name": "Racha máxima diaria"},
+      "wind_direction": {"name": "Dirección del viento"},
+      "rain_today": {"name": "Lluvia hoy"},
+      "rain_month": {"name": "Lluvia mensual"},
+      "rain_year": {"name": "Lluvia anual"},
+      "rain_last_5": {"name": "Lluvia en los últimos 5 minutos"},
+      "rain_last_10": {"name": "Lluvia en los últimos 10 minutos"},
+      "observed_at": {"name": "Última observación"},
+      "rain_status": {"name": "Estado de lluvia", "state": {"raining": "Lloviendo", "dry": "No llueve"}}
+    },
+    "binary_sensor": {"raining": {"name": "Lloviendo"}}
+  }
+}

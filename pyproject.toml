@@ -1,0 +1,35 @@
+[project]
+name = "ha-avamet"
+version = "0.1.0"
+description = "Observation-only AVAMET integration for Home Assistant"
+requires-python = ">=3.14.2"
+
+[dependency-groups]
+dev = [
+    "homeassistant==2026.9.2",
+    "pytest>=8,<10",
+    "pytest-asyncio>=1,<2",
+    "pytest-cov>=6,<8",
+    "ruff>=0.12,<1",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "ASYNC"]
+ignore = ["E501"]
+
+[tool.coverage.run]
+source = ["custom_components.avamet"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 90

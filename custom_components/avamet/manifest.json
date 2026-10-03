@@ -1,0 +1,12 @@
+{
+  "domain": "avamet",
+  "name": "AVAMET",
+  "codeowners": ["@acamposcar"],
+  "config_flow": true,
+  "documentation": "https://github.com/acamposcar/ha-avamet",
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/acamposcar/ha-avamet/issues",
+  "requirements": [],
+  "version": "0.1.0"
+}

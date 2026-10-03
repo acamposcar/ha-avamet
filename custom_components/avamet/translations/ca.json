@@ -1,0 +1,52 @@
+{
+  "title": "AVAMET",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Afegir una estació d'AVAMET",
+        "description": "Introduïu l'ID de l'URL d'AVAMET (per exemple c13m207e02). Només s'afegiran les mesures disponibles en aquesta estació.",
+        "data": {"station_id": "ID de l'estació"}
+      }
+    },
+    "error": {
+      "invalid_station_id": "Utilitzeu un ID com c13m207e02, no un URL.",
+      "cannot_connect": "No es pot connectar amb AVAMET. Torneu-ho a provar més tard.",
+      "invalid_response": "No s'ha trobat cap observació utilitzable. Comproveu l'ID i la pàgina pública d'AVAMET."
+    },
+    "abort": {"already_configured": "Aquesta estació ja està configurada."}
+  },
+  "options": {
+    "error": {"invalid_options": "Utilitzeu valors dins dels intervals permesos."},
+    "step": {
+      "init": {
+        "title": "Opcions de l'estació",
+        "description": "Les observacions que superen l'antiguitat màxima deixen d'estar disponibles. No s'inventen previsions ni estats del cel.",
+        "data": {
+          "update_interval_minutes": "Interval d'actualització (minuts, mínim 5)",
+          "max_age_minutes": "Antiguitat màxima de l'observació (minuts)",
+          "windy_threshold_kmh": "Llindar de vent fort (km/h)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {"name": "Temperatura"},
+      "temperature_min": {"name": "Temperatura mínima diària"},
+      "temperature_max": {"name": "Temperatura màxima diària"},
+      "humidity": {"name": "Humitat"},
+      "pressure": {"name": "Pressió"},
+      "wind_speed": {"name": "Velocitat del vent"},
+      "daily_max_wind_gust": {"name": "Ratxa màxima diària"},
+      "wind_direction": {"name": "Direcció del vent"},
+      "rain_today": {"name": "Pluja hui"},
+      "rain_month": {"name": "Pluja mensual"},
+      "rain_year": {"name": "Pluja anual"},
+      "rain_last_5": {"name": "Pluja en els últims 5 minuts"},
+      "rain_last_10": {"name": "Pluja en els últims 10 minuts"},
+      "observed_at": {"name": "Última observació"},
+      "rain_status": {"name": "Estat de pluja", "state": {"raining": "Plovent", "dry": "No plou"}}
+    },
+    "binary_sensor": {"raining": {"name": "Plovent"}}
+  }
+}

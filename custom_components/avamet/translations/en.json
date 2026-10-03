@@ -1,0 +1,52 @@
+{
+  "title": "AVAMET",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add an AVAMET station",
+        "description": "Enter the station ID from its AVAMET URL (for example c13m207e02). Only measurements supported by this station will be added.",
+        "data": {"station_id": "Station ID"}
+      }
+    },
+    "error": {
+      "invalid_station_id": "Use an ID such as c13m207e02, not a URL.",
+      "cannot_connect": "Cannot connect to AVAMET. Please try again later.",
+      "invalid_response": "No usable station observation was found. Check the ID and the public AVAMET page."
+    },
+    "abort": {"already_configured": "This station is already configured."}
+  },
+  "options": {
+    "error": {"invalid_options": "Use values within the permitted ranges."},
+    "step": {
+      "init": {
+        "title": "Station options",
+        "description": "Observations older than the maximum age become unavailable. No forecasts or sky conditions are invented.",
+        "data": {
+          "update_interval_minutes": "Update interval (minutes, minimum 5)",
+          "max_age_minutes": "Maximum observation age (minutes)",
+          "windy_threshold_kmh": "Strong wind threshold (km/h)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "temperature": {"name": "Temperature"},
+      "temperature_min": {"name": "Daily minimum temperature"},
+      "temperature_max": {"name": "Daily maximum temperature"},
+      "humidity": {"name": "Humidity"},
+      "pressure": {"name": "Pressure"},
+      "wind_speed": {"name": "Wind speed"},
+      "daily_max_wind_gust": {"name": "Daily maximum wind gust"},
+      "wind_direction": {"name": "Wind direction"},
+      "rain_today": {"name": "Rain today"},
+      "rain_month": {"name": "Monthly rain"},
+      "rain_year": {"name": "Yearly rain"},
+      "rain_last_5": {"name": "Rain in the last 5 minutes"},
+      "rain_last_10": {"name": "Rain in the last 10 minutes"},
+      "observed_at": {"name": "Last observation"},
+      "rain_status": {"name": "Rain status", "state": {"raining": "Raining", "dry": "Not raining"}}
+    },
+    "binary_sensor": {"raining": {"name": "Raining"}}
+  }
+}
