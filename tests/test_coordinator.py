@@ -1,4 +1,5 @@
-from datetime import timedelta
+from dataclasses import replace
+from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, Mock, patch
 
 import pytest
@@ -98,3 +99,23 @@ async def test_old_successful_response_is_unavailable(hass, entry, html, now):
         coordinator.data = await coordinator._async_update_data()
         assert not coordinator.observation_available
         assert coordinator._cancel_expiry is None
+
+
+async def test_expiry_uses_elapsed_time_across_dst_change(hass, entry, html, now):
+    observation = parse_observation(html, "c13m207e02", now=now)
+    observed = observation.observed_at.replace(year=2026, month=10, day=25, hour=2, minute=55)
+    observation = replace(observation, observed_at=observed)
+    current = datetime(2026, 10, 25, 0, 56, tzinfo=UTC)
+    client = Mock(
+        station_id="c13m207e02", async_get_observation=AsyncMock(return_value=observation)
+    )
+    coordinator = AvametCoordinator(hass, entry, client)
+    with (
+        patch("custom_components.avamet.coordinator.dt_util.utcnow", return_value=current),
+        patch("custom_components.avamet.coordinator.async_track_point_in_utc_time") as schedule,
+    ):
+        await coordinator._async_update_data()
+    expiry = schedule.call_args.args[2]
+    assert expiry == datetime(2026, 10, 25, 1, 15, tzinfo=UTC)
+    assert expiry.tzinfo is UTC
+    coordinator.cancel_expiry()

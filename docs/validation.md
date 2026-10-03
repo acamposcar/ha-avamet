@@ -3,7 +3,7 @@
 Comprobada el 3 de octubre de 2026 con Home Assistant 2026.9.2 y Python 3.14.8
 en un entorno aislado, sin usar configuración privada ni credenciales.
 
-- 76 pruebas automatizadas pasan; cobertura del componente: 97,69 %.
+- 77 pruebas automatizadas pasan; cobertura del componente: aproximadamente 98 %.
 - Ruff: análisis y formato correctos.
 - Hassfest oficial de Home Assistant 2026.9.2: una integración revisada,
   cero integraciones inválidas; manifest, traducciones, dependencias y
@@ -22,6 +22,7 @@ en un entorno aislado, sin usar configuración privada ni credenciales.
 Las pruebas cubren acumulados diarios, medianoche, gráficas retrasadas,
 huecos, valores inválidos, reintentos acotados, errores HTTP, cancelación,
 límite de descarga, caché, caducidad, IDs duplicados y opciones fuera de rango.
+La caducidad usa tiempo transcurrido en UTC, también durante el cambio horario.
 
 ## Pendiente para distribución y activación
 

@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
@@ -68,7 +68,7 @@ class AvametCoordinator(DataUpdateCoordinator[Snapshot]):
                 )
             raise UpdateFailed(str(exc)) from exc
         self.cancel_expiry()
-        expires = observation.observed_at + timedelta(minutes=self.max_age_minutes)
+        expires = observation.observed_at.astimezone(UTC) + timedelta(minutes=self.max_age_minutes)
         if expires > dt_util.utcnow():
             self._cancel_expiry = async_track_point_in_utc_time(self.hass, self._expire, expires)
         return Snapshot(observation, attempted_at=attempted_at)
