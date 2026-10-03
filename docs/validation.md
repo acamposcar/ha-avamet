@@ -24,10 +24,21 @@ huecos, valores inválidos, reintentos acotados, errores HTTP, cancelación,
 límite de descarga, caché, caducidad, IDs duplicados y opciones fuera de rango.
 La caducidad usa tiempo transcurrido en UTC, también durante el cambio horario.
 
-## Pendiente para distribución y activación
+## Publicación y validación en GitHub
 
-- Publicar el repositorio público autorizado y ejecutar allí los workflows
-  de GitHub, incluida la comprobación de HACS.
+El repositorio público [acamposcar/ha-avamet](https://github.com/acamposcar/ha-avamet)
+contiene únicamente el proyecto de la integración, no la configuración privada
+de Home Assistant. Se conserva el historial de los commits locales.
+
+La [validación de GitHub Actions](https://github.com/acamposcar/ha-avamet/actions/runs/37128266134)
+ha superado las pruebas con dependencias bloqueadas, Ruff, hassfest y HACS.
+La primera comprobación de HACS detectó que faltaban la descripción y los temas
+del repositorio; tras añadir esos metadatos, el reintento terminó correctamente.
+La comprobación de marcas externas se omite porque el icono propio se distribuye
+dentro del componente y no se ha solicitado su inclusión en el catálogo oficial.
+
+## Pendiente en Home Assistant
+
 - Confirmar la instalación y descarga efectiva desde HACS. Tener su
   estructura y metadatos no equivale a estar en su catálogo por defecto.
 - Migrar la instalación existente de Home Assistant tras revisar el efecto

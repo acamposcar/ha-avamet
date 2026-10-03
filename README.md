@@ -33,7 +33,8 @@ Requiere Home Assistant **2026.9 o posterior**; las pruebas se ejecutan con
 
 ### HACS
 
-Una vez publicado el repositorio:
+El repositorio público está disponible en
+[acamposcar/ha-avamet](https://github.com/acamposcar/ha-avamet):
 
 1. Abrir **HACS → Repositorios personalizados**.
 2. Añadir `https://github.com/acamposcar/ha-avamet`, categoría **Integración**.
@@ -123,7 +124,7 @@ mientras los valores numéricos siguen disponibles.
 ## Desarrollo
 
 ```bash
-uv sync --group dev
+uv sync --locked --group dev
 uv run ruff check .
 uv run ruff format --check .
 uv run pytest --cov --cov-report=term-missing
